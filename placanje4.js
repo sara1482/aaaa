@@ -508,7 +508,7 @@ generateCartItems();
   localStorage.setItem("data", JSON.stringify(basket));
   };
   
-let updateFormDataAndCartDataForSubmission = () => {
+  let updateFormDataForSubmission = () => {
     // Update User Details
     document.getElementById("inputIme").value = document.getElementById("displayIme").innerText;
     document.getElementById("inputPrezime").value = document.getElementById("displayPrezime").innerText;
@@ -519,12 +519,15 @@ let updateFormDataAndCartDataForSubmission = () => {
     document.getElementById("inputPostanskibroj").value = document.getElementById("displayPostanskibroj").innerText;
 
     // Update Cart Data
+    updateCartDataForSubmission();
+};
+  
+  let updateCartDataForSubmission = () => {
     let cartDataString = basket.map(x => {
         let { id, item } = x;
         let search = shopItemsData.find(y => y.id === id) || {};
         return `${search.name} - Quantity: ${item}, Price: ${search.price} KM, Total: ${item * search.price} KM`;
     }).join("\n");
-
     document.getElementById("cartDataInput").value = cartDataString;
 };
 
@@ -558,11 +561,11 @@ let TotalAmount = () => {
               </form>
           </div>
       `;
-updateFormDataAndCartDataForSubmission();
-    cartDataString();
+
+      updateCartDataForSubmission();
       document.querySelector("#contactForm").addEventListener("submit", (event) => {
-        updateFormDataAndCartDataForSubmission();
-        cartDataString();
+        updateCartDataForSubmission(); // Updates the form with cart data
+        updateFormDataForSubmission(); // Updates the form with customer's details
        
     });
     
