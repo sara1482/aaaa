@@ -517,7 +517,7 @@ generateCartItems();
     document.getElementById("inputUlica").value = document.getElementById("displayUlica").innerText;
     document.getElementById("inputBroj").value = document.getElementById("displayBroj").innerText;
     document.getElementById("inputPostanskibroj").value = document.getElementById("displayPostanskibroj").innerText;
-
+   updateCartDataForSubmission();
 };
   
   let updateCartDataForSubmission = () => {
@@ -560,8 +560,12 @@ let TotalAmount = () => {
       `;
 
       updateCartDataForSubmission();
-    updateFormDataForSubmission();
-      document.querySelector(".checkout").addEventListener("click", updateCartDataForSubmission, updateFormDataForSubmission);
+      document.querySelector("#contactForm").addEventListener("submit", (event) => {
+        updateCartDataForSubmission(); // Updates the form with cart data
+        updateFormDataForSubmission(); // Updates the form with customer's details
+       
+    });
+    
   }
 };
 
