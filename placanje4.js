@@ -518,8 +518,6 @@ generateCartItems();
     document.getElementById("inputBroj").value = document.getElementById("displayBroj").innerText;
     document.getElementById("inputPostanskibroj").value = document.getElementById("displayPostanskibroj").innerText;
 
-    // Update Cart Data
-    updateCartDataForSubmission();
 };
   
   let updateCartDataForSubmission = () => {
@@ -553,7 +551,7 @@ let TotalAmount = () => {
               </form>
           </div>
       `;
-
+      updateFormDataForSubmission();
       updateCartDataForSubmission();
       document.querySelector("#contactForm").addEventListener("submit", (event) => {
         updateCartDataForSubmission(); // Updates the form with cart data
