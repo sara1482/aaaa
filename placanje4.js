@@ -563,6 +563,7 @@ let TotalAmount = () => {
 
   document.querySelector("#contactForm").addEventListener("submit", (event) => {
         updateFormDataForSubmission(); 
+    updateCartDataForSubmission();
        
     });
     
