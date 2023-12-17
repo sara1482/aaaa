@@ -517,11 +517,7 @@ generateCartItems();
     document.getElementById("inputUlica").value = document.getElementById("displayUlica").innerText;
     document.getElementById("inputBroj").value = document.getElementById("displayBroj").innerText;
     document.getElementById("inputPostanskibroj").value = document.getElementById("displayPostanskibroj").innerText;
-
-    // Update Cart Data
-    updateCartDataForSubmission();
-};
-  
+    
   let updateCartDataForSubmission = () => {
     let cartDataString = basket.map(x => {
         let { id, item } = x;
@@ -530,6 +526,9 @@ generateCartItems();
     }).join("\n");
     document.getElementById("cartDataInput").value = cartDataString;
 };
+};
+  
+
 
   
 let TotalAmount = () => {
