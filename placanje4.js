@@ -558,9 +558,11 @@ let TotalAmount = () => {
               </form>
           </div>
       `;
-
-     document.querySelector("#contactForm").addEventListener("submit", (event) => {
-    updateFormDataAndCartDataForSubmission();
+updateFormDataAndCartDataForSubmission();
+    cartDataString();
+      document.querySelector("#contactForm").addEventListener("submit", (event) => {
+        updateFormDataAndCartDataForSubmission();
+        cartDataString();
        
     });
     
