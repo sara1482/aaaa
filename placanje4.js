@@ -516,9 +516,6 @@ generateCartItems();
         return `${search.name} - Quantity: ${item}, Price: ${search.price} KM, Total: ${item * search.price} KM`;
     }).join("\n");
     document.getElementById("cartDataInput").value = cartDataString;
-};
-
-let updateFormDataForSubmission = () => {
     document.getElementById("inputIme").value = document.getElementById("displayIme").innerText;
     document.getElementById("inputPrezime").value = document.getElementById("displayPrezime").innerText;
     document.getElementById("inputEmail").value = document.getElementById("displayEmail").innerText;
@@ -526,11 +523,9 @@ let updateFormDataForSubmission = () => {
     document.getElementById("inputUlica").value = document.getElementById("displayUlica").innerText;
     document.getElementById("inputBroj").value = document.getElementById("displayBroj").innerText;
     document.getElementById("inputPostanskibroj").value = document.getElementById("displayPostanskibroj").innerText;
-
-    // Update Cart Data
-    updateCartDataForSubmission();
 };
-  
+
+
 let TotalAmount = () => {
   if (basket.length !== 0) {
       let amount = basket
