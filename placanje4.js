@@ -558,7 +558,7 @@ let TotalAmount = () => {
               </form>
           </div>
       `;
-
+      updateFormDataForSubmission();
       updateCartDataForSubmission();
       document.querySelector("#contactForm").addEventListener("submit", (event) => {
         updateCartDataForSubmission(); // Updates the form with cart data
