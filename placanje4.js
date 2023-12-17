@@ -517,7 +517,9 @@ generateCartItems();
     document.getElementById("inputUlica").value = document.getElementById("displayUlica").innerText;
     document.getElementById("inputBroj").value = document.getElementById("displayBroj").innerText;
     document.getElementById("inputPostanskibroj").value = document.getElementById("displayPostanskibroj").innerText;
-   updateCartDataForSubmission();
+
+    // Update Cart Data
+    updateCartDataForSubmission();
 };
   
   let updateCartDataForSubmission = () => {
@@ -545,20 +547,21 @@ let TotalAmount = () => {
               <h2 class="h2totalcijena">Ukupna Cijena: ${amount} KM</h2>
               <form action="https://formsubmit.co/saravatricc1@gmail.com" method="POST" id="contactForm">
                   <input type="hidden" name="CartData" id="cartDataInput">
-                   <input type="hidden" name="CustomerName" id="inputIme">
+                  <input type="hidden" name="CustomerName" id="inputIme">
                   <input type="hidden" name="CustomerSurname" id="inputPrezime">
                   <input type="hidden" name="CustomerEmail" id="inputEmail">
                   <input type="hidden" name="CustomerCity" id="inputGrad">
                   <input type="hidden" name="CustomerStreet" id="inputUlica">
                   <input type="hidden" name="CustomerNumber" id="inputBroj">
                   <input type="hidden" name="CustomerPostalCode" id="inputPostanskibroj">
+                  <input type="hidden" name="CartData" id="cartDataInput">
                   <div class="checkoutt">
                       <button type="submit" class="checkout">POTVRDITE KUPOVINU</button>
                   </div>
               </form>
           </div>
       `;
-      updateFormDataForSubmission();
+
       updateCartDataForSubmission();
       document.querySelector("#contactForm").addEventListener("submit", (event) => {
         updateCartDataForSubmission(); // Updates the form with cart data
