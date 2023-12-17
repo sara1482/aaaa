@@ -508,18 +508,27 @@ generateCartItems();
   localStorage.setItem("data", JSON.stringify(basket));
   };
   
-  
-  let updateCartDataForSubmission = () => {
+let updateFormDataAndCartDataForSubmission = () => {
+    // Update User Details
+    document.getElementById("inputIme").value = document.getElementById("displayIme").innerText;
+    document.getElementById("inputPrezime").value = document.getElementById("displayPrezime").innerText;
+    document.getElementById("inputEmail").value = document.getElementById("displayEmail").innerText;
+    document.getElementById("inputGrad").value = document.getElementById("displayGrad").innerText;
+    document.getElementById("inputUlica").value = document.getElementById("displayUlica").innerText;
+    document.getElementById("inputBroj").value = document.getElementById("displayBroj").innerText;
+    document.getElementById("inputPostanskibroj").value = document.getElementById("displayPostanskibroj").innerText;
+
+    // Update Cart Data
     let cartDataString = basket.map(x => {
         let { id, item } = x;
         let search = shopItemsData.find(y => y.id === id) || {};
         return `${search.name} - Quantity: ${item}, Price: ${search.price} KM, Total: ${item * search.price} KM`;
     }).join("\n");
+
     document.getElementById("cartDataInput").value = cartDataString;
-  
 };
 
-
+  
 let TotalAmount = () => {
   if (basket.length !== 0) {
       let amount = basket
@@ -550,9 +559,8 @@ let TotalAmount = () => {
           </div>
       `;
 
-  document.querySelector("#contactForm").addEventListener("submit", (event) => {
-        updateFormDataForSubmission(); 
-    updateCartDataForSubmission();
+     document.querySelector("#contactForm").addEventListener("submit", (event) => {
+    updateFormDataAndCartDataForSubmission();
        
     });
     
