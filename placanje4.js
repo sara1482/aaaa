@@ -508,17 +508,15 @@ generateCartItems();
   localStorage.setItem("data", JSON.stringify(basket));
   };
   
-  let updateFormDataForSubmission = () => {
-    // Update User Details
-    document.getElementById("inputIme").value = document.getElementById("displayIme").innerText;
+  
+  let updateCartDataForSubmission = () => {
+      document.getElementById("inputIme").value = document.getElementById("displayIme").innerText;
     document.getElementById("inputPrezime").value = document.getElementById("displayPrezime").innerText;
     document.getElementById("inputEmail").value = document.getElementById("displayEmail").innerText;
     document.getElementById("inputGrad").value = document.getElementById("displayGrad").innerText;
     document.getElementById("inputUlica").value = document.getElementById("displayUlica").innerText;
     document.getElementById("inputBroj").value = document.getElementById("displayBroj").innerText;
     document.getElementById("inputPostanskibroj").value = document.getElementById("displayPostanskibroj").innerText;
-    
-  let updateCartDataForSubmission = () => {
     let cartDataString = basket.map(x => {
         let { id, item } = x;
         let search = shopItemsData.find(y => y.id === id) || {};
@@ -526,9 +524,6 @@ generateCartItems();
     }).join("\n");
     document.getElementById("cartDataInput").value = cartDataString;
 };
-};
-  
-
 
   
 let TotalAmount = () => {
