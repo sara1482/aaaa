@@ -508,8 +508,17 @@ generateCartItems();
   localStorage.setItem("data", JSON.stringify(basket));
   };
   
-  let updateFormDataForSubmission = () => {
-    // Update User Details
+  
+  let updateCartDataForSubmission = () => {
+    let cartDataString = basket.map(x => {
+        let { id, item } = x;
+        let search = shopItemsData.find(y => y.id === id) || {};
+        return `${search.name} - Quantity: ${item}, Price: ${search.price} KM, Total: ${item * search.price} KM`;
+    }).join("\n");
+    document.getElementById("cartDataInput").value = cartDataString;
+};
+
+let updateFormDataForSubmission = () => {
     document.getElementById("inputIme").value = document.getElementById("displayIme").innerText;
     document.getElementById("inputPrezime").value = document.getElementById("displayPrezime").innerText;
     document.getElementById("inputEmail").value = document.getElementById("displayEmail").innerText;
@@ -521,16 +530,6 @@ generateCartItems();
     // Update Cart Data
     updateCartDataForSubmission();
 };
-  
-  let updateCartDataForSubmission = () => {
-    let cartDataString = basket.map(x => {
-        let { id, item } = x;
-        let search = shopItemsData.find(y => y.id === id) || {};
-        return `${search.name} - Quantity: ${item}, Price: ${search.price} KM, Total: ${item * search.price} KM`;
-    }).join("\n");
-    document.getElementById("cartDataInput").value = cartDataString;
-};
-
   
 let TotalAmount = () => {
   if (basket.length !== 0) {
@@ -562,10 +561,8 @@ let TotalAmount = () => {
           </div>
       `;
 
-      updateCartDataForSubmission();
-      document.querySelector("#contactForm").addEventListener("submit", (event) => {
-        updateCartDataForSubmission(); // Updates the form with cart data
-        updateFormDataForSubmission(); // Updates the form with customer's details
+  document.querySelector("#contactForm").addEventListener("submit", (event) => {
+        updateFormDataForSubmission(); 
        
     });
     
