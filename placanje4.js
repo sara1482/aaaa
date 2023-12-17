@@ -553,7 +553,8 @@ let TotalAmount = () => {
       `;
 
       updateCartDataForSubmission();
-      document.querySelector(".checkout").addEventListener("click", updateCartDataForSubmission);
+    updateFormDataForSubmission();
+      document.querySelector(".checkout").addEventListener("click", updateCartDataForSubmission, updateFormDataForSubmission);
   }
 };
 
