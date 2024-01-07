@@ -554,7 +554,6 @@ let TotalAmount = () => {
                   <input type="hidden" name="CustomerStreet" id="inputUlica">
                   <input type="hidden" name="CustomerNumber" id="inputBroj">
                   <input type="hidden" name="CustomerPostalCode" id="inputPostanskibroj">
-                  <input type="hidden" name="CartData" id="cartDataInput">
                   <div class="checkoutt">
                       <button type="submit" class="checkout">POTVRDITE KUPOVINU</button>
                   </div>
