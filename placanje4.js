@@ -508,28 +508,34 @@ generateCartItems();
   localStorage.setItem("data", JSON.stringify(basket));
   };
   
-  let updateFormDataForSubmission = () => {
-    // Update User Details
-    document.getElementById("inputIme").value = document.getElementById("displayIme").innerText;
-    document.getElementById("inputPrezime").value = document.getElementById("displayPrezime").innerText;
-    document.getElementById("inputEmail").value = document.getElementById("displayEmail").innerText;
-    document.getElementById("inputGrad").value = document.getElementById("displayGrad").innerText;
-    document.getElementById("inputUlica").value = document.getElementById("displayUlica").innerText;
-    document.getElementById("inputBroj").value = document.getElementById("displayBroj").innerText;
-    document.getElementById("inputPostanskibroj").value = document.getElementById("displayPostanskibroj").innerText;
-
-    // Update Cart Data
-    updateCartDataForSubmission();
-};
+  
   
   let updateCartDataForSubmission = () => {
+    // Retrieve cart data
     let cartDataString = basket.map(x => {
         let { id, item } = x;
         let search = shopItemsData.find(y => y.id === id) || {};
         return `${search.name} - Quantity: ${item}, Price: ${search.price} KM, Total: ${item * search.price} KM`;
     }).join("\n");
-    document.getElementById("cartDataInput").value = cartDataString;
+
+    // Retrieve user information from local storage
+    const userInfo = {
+        ime: localStorage.getItem("ime"),
+        prezime: localStorage.getItem("prezime"),
+        email: localStorage.getItem("email"),
+        grad: localStorage.getItem("grad"),
+        ulica: localStorage.getItem("ulica"),
+        broj: localStorage.getItem("broj"),
+        postanskibroj: localStorage.getItem("postanskibroj")
+    };
+
+    // Combine user info and cart data
+    let combinedData = `User Information:\n${JSON.stringify(userInfo)}\n\nCart Data:\n${cartDataString}`;
+
+    // Set the combined data to the form input
+    document.getElementById("cartDataInput").value = combinedData;
 };
+
 
   
 let TotalAmount = () => {
@@ -547,14 +553,6 @@ let TotalAmount = () => {
               <h2 class="h2totalcijena">Ukupna Cijena: ${amount} KM</h2>
               <form action="https://formsubmit.co/saravatricc1@gmail.com" method="POST" id="contactForm">
                   <input type="hidden" name="CartData" id="cartDataInput">
-                  <input type="hidden" name="CustomerName" id="inputIme">
-                  <input type="hidden" name="CustomerSurname" id="inputPrezime">
-                  <input type="hidden" name="CustomerEmail" id="inputEmail">
-                  <input type="hidden" name="CustomerCity" id="inputGrad">
-                  <input type="hidden" name="CustomerStreet" id="inputUlica">
-                  <input type="hidden" name="CustomerNumber" id="inputBroj">
-                  <input type="hidden" name="CustomerPostalCode" id="inputPostanskibroj">
-                  <input type="hidden" name="CartData" id="cartDataInput">
                   <div class="checkoutt">
                       <button type="submit" class="checkout">POTVRDITE KUPOVINU</button>
                   </div>
@@ -562,11 +560,8 @@ let TotalAmount = () => {
           </div>
       `;
 
-     updateCartDataForSubmission();
+      updateCartDataForSubmission();
       document.querySelector(".checkout").addEventListener("click", updateCartDataForSubmission);
-    });
-    
-    
   }
 };
 
