@@ -518,7 +518,8 @@ generateCartItems();
     document.getElementById("inputBroj").value = document.getElementById("displayBroj").innerText;
     document.getElementById("inputPostanskibroj").value = document.getElementById("displayPostanskibroj").innerText;
 
-    
+    // Update Cart Data
+    updateCartDataForSubmission();
 };
   
   let updateCartDataForSubmission = () => {
