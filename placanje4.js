@@ -511,7 +511,7 @@ generateCartItems();
   
   
   let updateCartDataForSubmission = () => {
-    // Retrieve cart data
+    // Retrieve and format cart data
     let cartDataString = basket.map(x => {
         let { id, item } = x;
         let search = shopItemsData.find(y => y.id === id) || {};
@@ -529,12 +529,16 @@ generateCartItems();
         postanskibroj: localStorage.getItem("postanskibroj")
     };
 
-    // Combine user info and cart data
-    let combinedData = `User Information:\n${JSON.stringify(userInfo)}\n\nCart Data:\n${cartDataString}`;
+    // Combine user info and cart data into a readable format
+    let combinedData = `User Information:\n${JSON.stringify(userInfo, null, 2)}\n\nCart Data:\n${cartDataString}`;
 
     // Set the combined data to the form input
     document.getElementById("cartDataInput").value = combinedData;
 };
+
+// Call this function when the checkout button is clicked
+document.querySelector(".checkout").addEventListener("click", updateCartDataForSubmission);
+
 
 
   
