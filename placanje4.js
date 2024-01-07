@@ -562,12 +562,10 @@ let TotalAmount = () => {
           </div>
       `;
 
-      updateCartDataForSubmission();
-      document.querySelector(".checkout").addEventListener("submit", (event) => {
-        updateCartDataForSubmission(); // Updates the form with cart data
-        updateFormDataForSubmission(); // Updates the form with customer's details
-       
+      document.querySelector("#contactForm").addEventListener("submit", (event) => {
+        updateFormDataForSubmission(); // This will update both cart data and customer details
     });
+    
     
   }
 };
