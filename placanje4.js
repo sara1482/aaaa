@@ -1,4 +1,3 @@
-
 let shopItemsData = [
   {
     id: "mrezazagazista1",
@@ -536,8 +535,7 @@ generateCartItems();
     document.getElementById("cartDataInput").value = combinedData;
 };
 
-// Call this function when the checkout button is clicked
-document.querySelector(".checkout").addEventListener("click", updateCartDataForSubmission);
+
 
 
 
@@ -570,26 +568,3 @@ let TotalAmount = () => {
 };
 
 TotalAmount();
-
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
