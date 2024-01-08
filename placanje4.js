@@ -539,6 +539,7 @@ generateCartItems();
 
 
 
+
   
 let TotalAmount = () => {
   if (basket.length !== 0) {
