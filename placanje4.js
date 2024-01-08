@@ -535,7 +535,7 @@ generateCartItems();
     document.getElementById("cartDataInput").value = combinedData;
 };
 
-
+// Call this function when the checkout button is clicked
 
 
 
